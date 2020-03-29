@@ -9,33 +9,33 @@ int main(int argc, char **argv)
     // name width height title_with_no_spaces cude x y a
     // name width height title_with_no_spaces circle x y r
 
-    char* shape = argv[4];
-    char* fileName = argv[0];
-    double width = atof(argv[1]);
-    double height = atof(argv[2]);
+    char* shape = argv[5];
+    char* fileName = argv[1];
+    double width = atof(argv[2]);
+    double height = atof(argv[3]);
     char* title = argv[3];
+    
 
     CairoPDF cpdf(fileName,title,height,width);
 
-    if(strcmp(shape,"rectangle")){
-        double x = atof(argv[5]);
-        double y = atof(argv[6]);
-        double w = atof(argv[7]);
-        double h = atof(argv[8]);
-        //std::cout<<"before calling drawrectangle\n";
+    if(strcmp(shape,"rectangle")==0){
+        double x = atof(argv[6]);
+        double y = atof(argv[7]);
+        double w = atof(argv[8]);
+        double h = atof(argv[9]);
         cpdf.drawRectangle(w,h,x,y);
-        //std::cout<<"after calling drawrectangle\n";
 
 
-    }else if(strcmp(shape,"cude")){
-        double x = atof(argv[5]);
-        double y = atof(argv[6]);
-        double a = atof(argv[7]);
+    }else if(strcmp(shape,"cude")==0){
+        double x = atof(argv[6]);
+        double y = atof(argv[7]);
+        double a = atof(argv[8]);
 
-    }else if(strcmp(shape,"circle")){
-        double x = atof(argv[5]);
-        double y = atof(argv[6]);
-        double r = atof(argv[7]);
+    }else if(strcmp(shape,"circle")==0){
+        double x = atof(argv[6]);
+        double y = atof(argv[7]);
+        double r = atof(argv[8]);
+        cpdf.drawCircle(r,x,y);
     }else if(strcmp(shape,"polygon")){
 
     }
