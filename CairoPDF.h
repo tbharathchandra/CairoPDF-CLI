@@ -3,6 +3,11 @@
 #include <cairo.h>
 #include <cairo-pdf.h>
 #include <vector>
+#include <fstream>
+#include <iostream>
+#include <math.h>
+#include <sstream>
+
 
 
 struct point{
@@ -20,7 +25,7 @@ public:
 
     void drawRectangle(double w,double h,double x,double y);
     void drawCircle(double radius,double cx,double cy);
-    void drawPolygon(std::vector<point> &poly,double x,double y);
+    void drawPolygon(std::ifstream &fin,double cx,double cy);
     void drawText(char* text, double x,double y,double size);
     void drawCube(double a,double x,double y){ drawRectangle(a,a,x,y); }
 

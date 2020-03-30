@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include <fstream>
 
 #include "CairoPDF.h"
 
@@ -25,19 +26,25 @@ int main(int argc, char **argv)
         double h = atof(argv[9]);
         cpdf.drawRectangle(w,h,x,y);
 
-
     }else if(strcmp(shape,"cude")==0){
         double x = atof(argv[6]);
         double y = atof(argv[7]);
         double a = atof(argv[8]);
+        cpdf.drawCube(a,x,y);
 
     }else if(strcmp(shape,"circle")==0){
         double x = atof(argv[6]);
         double y = atof(argv[7]);
         double r = atof(argv[8]);
         cpdf.drawCircle(r,x,y);
-    }else if(strcmp(shape,"polygon")){
 
+    }else if(strcmp(shape,"polygon")==0){
+        double x = atof(argv[6]);
+        double y = atof(argv[7]);
+        char* points = argv[8];
+        std::ifstream fin(points);
+        cpdf.drawPolygon(fin,x,y);
+        fin.close();
     }
 
     return 0;
