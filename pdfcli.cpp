@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string.h>
 #include <fstream>
+#include <unistd.h>
 
 #include "CairoPDF.h"
 
@@ -9,6 +10,8 @@ int main(int argc, char **argv)
     // name width height title_with_no_spaces rectangle x y w h
     // name width height title_with_no_spaces cude x y a
     // name width height title_with_no_spaces circle x y r
+
+    chdir(getenv("HOME"));
 
     char* shape = argv[5];
     char* fileName = argv[1];
