@@ -5,3 +5,16 @@ PDF-CLI is a command line tool for genrating PDF files. PDF-CLI can be used gene
 
 
 ### Usage of PDF-CLI
+| Shape | Arguments |
+| ------- | ----------- |
+| Rectangle | `$(path)/fileName.pdf` `width` `height` `title` `rectangle` `x` `y` `w` `h` |
+| Cube | `$(path)/fileName.pdf` `width` `height` `title` `cude` `x` `y` `a` |
+| Circle | `$(path)/fileName.pdf` `width` `height` `title` `circle` `x` `y` `r` |
+| Polygon | `$(path)/fileName.pdf` `width` `height` `title` `polygon` `x` `y` `$(anyPath)/pointsFile` |
+| Text | `$(path)/fileName.pdf` `width` `height` `title` `polygon` `x` `y` `text` `size` |
+
+         
+### Format of points file
+* First line should contain Bounding Box width and height separated by white-space.
+* From second line each line should have one point with it's abscissa and ordinate separated by white-space.
+* Have a look at **`examples/star`** file.
