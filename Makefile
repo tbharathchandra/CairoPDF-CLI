@@ -1,15 +1,32 @@
-output : CairoPDF.o pdfcli.o
-	gcc pdfcli.o CairoPDF.o -I/usr/include/cairo -o pdfcli.out -lcairo -lstdc++
-	gcc pdfcli.o CairoPDF.o -I/usr/include/cairo -o pdfcli -lcairo -lstdc++
+PROG = pdfcli
 
+INCLUDEDIRS = \
+	-I/usr/include/cairo
 
-CairoPDF.o : CairoPDF.cpp CairoPDF.h
-	gcc -I/usr/include/cairo  CairoPDF.cpp -c -lcairo
+LIBDIRS = \
+	-L/usr/lib/x86_64-linux-gnu
 
-pdfcli.o : pdfcli.cpp
-	gcc -Wall -I/usr/include/cairo  pdfcli.cpp -c -lcairo
+LIBS = \
+	-lcairo \
+	-lstdc++
+
+CXXSOURCES = \
+	CairoPDF.cpp \
+	pdfcli.cpp
+
+CXXOBJECTS = $(CXXSOURCES:.cpp=.o)
+
+CXX = gcc
+
+$(PROG) : $(CXXOBJECTS)
+	$(CXX) $^ $(INCLUDEDIRS) -o $@ $(LIBS)
+
+%.o : %.cpp
+	$(CXX) $(INCLUDEDIRS) $< -c $(LIBS)
 
 clean : 
-	rm *.out *.o pdfcli
+	rm $(CXXOBJECTS) $(PROG)
 
-	
+# Dependency chain
+CairoPDF.o : CairoPDF.cpp CairoPDF.h
+pdfcli.o : pdfcli.cpp
